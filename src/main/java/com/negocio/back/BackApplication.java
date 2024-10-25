@@ -1,16 +1,16 @@
 package com.negocio.back;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.back.dao.DaoFactory;
 import com.back.models.Usuario;
-import com.coderhouse.dao.DaoFactory;
-import com.coderhouse.modelo.Alumno;
-import com.coderhouse.modelo.Curso;
+
 
 @SpringBootApplication
-public class BackApplication {
+public class BackApplication implements CommandLineRunner{
 	
 	@Autowired
 	private DaoFactory dao;
@@ -21,9 +21,9 @@ public class BackApplication {
 	public void run(String... arg) {
 		try {
 
-			Usuario usuario = new Usuario ("hugo","sanchez", 283434342, "Zona Cotapa","hugoberugo@gmail.com");	
+			Usuario usuario = new Usuario ("hugo","sanchez", "9838378", "Zona Cotapa","hugoberugo@gmail.com");	
 			
-			dao.createAlumno(usuario);
+			dao.createUsuario(usuario);
 
 		} catch (Exception e) {
 			 e.printStackTrace(System.err);

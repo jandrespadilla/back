@@ -8,9 +8,9 @@ public class Usuario extends Persona {
 	    private String direccion;
 	    private String email;
 
-	    public Usuario(int id, String nombre, String apellido, String dni, String direccion, String email) {
+	    public Usuario( String nombre, String apellido, String dni, String direccion, String email) {
 	        super(nombre, apellido, dni);
-	        this.id = id;
+	        //this.id = id;
 	        this.direccion = direccion;
 	        this.email = email;
 	    }
