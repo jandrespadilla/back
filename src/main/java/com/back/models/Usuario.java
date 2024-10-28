@@ -1,12 +1,18 @@
 package com.back.models;
 
 import com.back.abstractas.Persona;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "usuarios")
 public class Usuario extends Persona {
-	 
+		@Id
+		@GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private int id;
-	    private String direccion;
-	    private String email;
+		@Column( nullable = false)
+ 		private String direccion;
+		@Column( nullable = false)
+		private String email;
 
 	    public Usuario( String nombre, String apellido, String dni, String direccion, String email) {
 	        super(nombre, apellido, dni);

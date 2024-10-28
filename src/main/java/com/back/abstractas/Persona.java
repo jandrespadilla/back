@@ -1,8 +1,16 @@
 package com.back.abstractas;
 
 import com.back.interfaces.Identificable;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class Persona implements Identificable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected int id;
     protected String nombre;
     protected String apellido;
     protected String dni;
