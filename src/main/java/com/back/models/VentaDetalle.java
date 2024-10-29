@@ -10,12 +10,12 @@ public class VentaDetalle  implements Identificable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_ventas_cabecera", nullable = false)
-    private VentaCabecera cabecera;
+
 
     @ManyToOne
+    @JoinColumn(name = "id_ventas_cabecera", nullable = false)
     private VentaCabecera ventaCabecera;
+
     @ManyToOne
     @JoinColumn(name = "id_productos", nullable = false)
     private Producto producto;
@@ -26,10 +26,12 @@ public class VentaDetalle  implements Identificable {
     private int cantidadCompra;
     @Column( nullable = false)
     private double totalDetalle;
+    public VentaDetalle() {
 
+    }
     public VentaDetalle(VentaCabecera cabecera, Producto producto, double precioProducto, int cantidadCompra, double totalDetalle) {
 
-        this.cabecera = cabecera;
+        this.ventaCabecera = cabecera;
         this.producto = producto;
         this.precioProducto = precioProducto;
         this.cantidadCompra = cantidadCompra;
@@ -53,11 +55,11 @@ public class VentaDetalle  implements Identificable {
     }
 
     public VentaCabecera getCabecera() {
-        return cabecera;
+        return ventaCabecera;
     }
 
     public void setCabecera(VentaCabecera cabecera) {
-        this.cabecera = cabecera;
+        this.ventaCabecera = cabecera;
     }
 
     public Producto getProducto() {

@@ -14,7 +14,12 @@ public abstract class Persona implements Identificable {
     protected String nombre;
     protected String apellido;
     protected String dni;
-	@Override
+
+    public Persona() {
+
+    }
+
+    @Override
 	public int getId() {
 		// TODO Auto-generated method stub
 		return 0;

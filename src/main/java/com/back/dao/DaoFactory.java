@@ -32,7 +32,20 @@ public class DaoFactory {
 	@Transactional
 	public void createVenta(VentaCabecera ventaCabecera, List<VentaDetalle> detallesVenta) {
 
+
 		em.persist(ventaCabecera);
+		em.flush();
+
+
+		Long id = (long) ventaCabecera.getId();
+
+
+		String numeroFactura = String.format("001-%06d", id);
+		ventaCabecera.setNumeroFactura(numeroFactura);
+
+
+		em.merge(ventaCabecera);
+
 
 
 		for (VentaDetalle detalle : detallesVenta) {
@@ -42,6 +55,9 @@ public class DaoFactory {
 	}
 	@Transactional
 	public List<VentaCabecera> obtenerVentas() {
-		return em.createQuery("SELECT v FROM VentaCabecera v", VentaCabecera.class).getResultList();
+		String jpql = "SELECT v FROM VentaCabecera v LEFT JOIN FETCH v.detalles";
+		return em.createQuery(jpql, VentaCabecera.class).getResultList();
 	}
+
+
 }

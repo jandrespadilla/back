@@ -14,7 +14,10 @@ public class Producto extends Item {
     private int stock;
     @Column( nullable = false)
     private double precio;
+    public Producto() {
+        super();
 
+    }
     public Producto(String nombre, String descripcion, int stock, double precio) {
         super( nombre, descripcion);
         this.stock = stock;

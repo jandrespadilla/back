@@ -14,6 +14,11 @@ public class Usuario extends Persona {
 		@Column( nullable = false)
 		private String email;
 
+
+	public Usuario() {
+        super();
+
+    }
 	    public Usuario( String nombre, String apellido, String dni, String direccion, String email) {
 	        super(nombre, apellido, dni);
 	        //this.id = id;

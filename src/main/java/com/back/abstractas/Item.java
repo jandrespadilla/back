@@ -12,7 +12,10 @@ public abstract class Item implements Identificable {
     @Column( nullable = false)
     protected String nombre;
     protected String descripcion;
+    public Item() {
 
+
+    }
     public Item( String nombre, String descripcion) {
 
         this.nombre = nombre;

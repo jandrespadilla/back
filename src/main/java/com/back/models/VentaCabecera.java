@@ -25,8 +25,13 @@ public class VentaCabecera implements Identificable {
     private String formaPago;
 
 
-    @OneToMany(mappedBy = "ventaCabecera", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "ventaCabecera",  fetch = FetchType.EAGER)
     private List<VentaDetalle> detalles;
+
+
+
+    public VentaCabecera() {
+    }
 
 
     public VentaCabecera( String numeroFactura, LocalDateTime fechaVenta, Usuario usuario, double totalVenta, String formaPago) {
@@ -87,7 +92,8 @@ public class VentaCabecera implements Identificable {
         this.formaPago = formaPago;
     }
     public List<VentaDetalle> getDetalles() {
-        return detalles;
+
+        return this.detalles;
     }
 
     public void setDetalles(List<VentaDetalle> detalles) {

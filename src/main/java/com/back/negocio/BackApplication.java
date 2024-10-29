@@ -36,8 +36,11 @@ public class BackApplication implements CommandLineRunner{
 	@Override
 	public void run(String... arg) {
 		try {
-			this.generaDatos();
-			this.generaDatos();
+			// Crea tablas e genera los datos en db
+			//this.generaDatos();
+
+			// Lista ventas Creadas y sus detalles
+			this.listarVentas();
 		} catch (Exception e) {
 			 e.printStackTrace(System.err);
 		}
@@ -86,6 +89,10 @@ public class BackApplication implements CommandLineRunner{
 		this.procesarVenta(usuario2,listaProductos4);
 	}
 
+
+
+
+
 	public void procesarVenta(Usuario usuario, Map<Producto, Integer> productosConCantidades) {
 		double totalVenta = 0.0;
 		VentaCabecera ventaCabecera = new VentaCabecera("001-000001", LocalDateTime.now(), usuario, 500.00, "Efectivo");
@@ -109,7 +116,7 @@ public class BackApplication implements CommandLineRunner{
 			String fechaFormateada = venta.getFechaVenta().format(formatter);
 
 
-			System.out.println("Venta " + venta.getId() + ": " + venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido() +
+			System.out.println("Venta " + venta.getNumeroFactura() + ": " + venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido() +
 					" | Fecha: " + fechaFormateada +
 					" | Total: $" + venta.getTotalVenta());
 
@@ -129,7 +136,7 @@ public class BackApplication implements CommandLineRunner{
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String fechaFormateada = venta.getFechaVenta().format(formatter);
 
-		System.out.println("Venta " + venta.getId() + ": " + venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido() +
+		System.out.println("Venta " + venta.getNumeroFactura() + ": " + venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido() +
 				" | Fecha: " + fechaFormateada +
 				" | Total: $" + venta.getTotalVenta());
 
@@ -139,6 +146,32 @@ public class BackApplication implements CommandLineRunner{
 					" | Cantidad: " + detalle.getCantidadCompra() +
 					" | Precio: $" + detalle.getPrecioProducto() +
 					" | Total del detalle: $" + detalle.getTotalDetalle());
+		}
+	}
+
+	public void listarVentas() {
+		List<VentaCabecera> ventas = dao.obtenerVentas();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+		for (VentaCabecera venta : ventas) {
+			String fechaFormateada = venta.getFechaVenta().format(formatter);
+
+			System.out.println("Venta " + venta.getNumeroFactura() + ": " + venta.getUsuario().getNombre() + " " + venta.getUsuario().getApellido() +
+					" | Fecha: " + fechaFormateada +
+					" | Total: $" + venta.getTotalVenta());
+
+			System.out.println("    Productos: ");
+
+			if (venta.getDetalles() != null && !venta.getDetalles().isEmpty()) {
+				for (VentaDetalle detalle : venta.getDetalles()) {
+					System.out.println("        - " + detalle.getProducto().getNombre() +
+							" | Cantidad: " + detalle.getCantidadCompra() +
+							" | Precio: $" + detalle.getPrecioProducto() +
+							" | Total del detalle: $" + detalle.getTotalDetalle());
+				}
+			} else {
+				System.out.println("        No hay detalles para esta venta.");
+			}
 		}
 	}
 }
