@@ -36,15 +36,18 @@ public class BackApplication implements CommandLineRunner{
 	@Override
 	public void run(String... arg) {
 		try {
-			// Crea tablas e genera los datos en db
+			// PASO 1
+			// Crear tablas y insertar los datos en db
 			//this.generaDatos();
-
+			// PASO 2
 			// Lista ventas Creadas y sus detalles
-			this.listarVentas();
+			this.listarVentas(); //Uso la ultima que no lleva parametros, las otras dos son utilizarlas en otro momento
 		} catch (Exception e) {
 			 e.printStackTrace(System.err);
 		}
 	}
+	// Funcion del paso uno
+	// Genera las tablas y inserta los datos
 	public void generaDatos(){
 
 		Usuario usuario1 = new Usuario ("Juan","Lopez", "6783833", "Zona Bajada","juanlopez@gmail.com");
@@ -56,16 +59,16 @@ public class BackApplication implements CommandLineRunner{
 		Producto producto3 = new Producto("Curso de Python", "Curso de Python con Dianjo para la creacion de API",40,130000.00);
 		Producto producto4 = new Producto("Curso de HTML", "Curso de HTML con CSS usando Bootstrap",40,100000.00);
 		Producto producto5 = new Producto("Curso de JavaScript", "Curso de JavaScript con JQuery ",40,90000.00);
-		dao.createUsuario(usuario1);
-		dao.createUsuario(usuario2);
-		dao.createUsuario(usuario3);
-		dao.createUsuario(usuario4);
+		this.dao.createUsuario(usuario1);
+		this.dao.createUsuario(usuario2);
+		this.dao.createUsuario(usuario3);
+		this.dao.createUsuario(usuario4);
 
-		dao.createProducto(producto1);
-		dao.createProducto(producto2);
-		dao.createProducto(producto3);
-		dao.createProducto(producto4);
-		dao.createProducto(producto5);
+		this.dao.createProducto(producto1);
+		this.dao.createProducto(producto2);
+		this.dao.createProducto(producto3);
+		this.dao.createProducto(producto4);
+		this.dao.createProducto(producto5);
 
 		Map<Producto, Integer> listaProductos1 = new HashMap<>();
 		listaProductos1.put(producto1, 2);
@@ -106,7 +109,7 @@ public class BackApplication implements CommandLineRunner{
 			totalVenta += totalDetalle;
 		}
 		ventaCabecera.setTotalVenta(totalVenta);
-		dao.createVenta(ventaCabecera, detallesVenta);
+		this.dao.createVenta(ventaCabecera, detallesVenta);
 	}
 
 	public void listarVentas(List<VentaCabecera> ventas) {
