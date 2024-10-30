@@ -5,6 +5,8 @@ import com.back.interfaces.Identificable;
 import jakarta.persistence.*;
 
 @MappedSuperclass
+// esta clase abstracta es para que implemente id nombre y descripcion
+// hice la interface identificable para que implemente el setid y getid
 public abstract class Item implements Identificable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +18,11 @@ public abstract class Item implements Identificable {
 
 
     }
+    public Item( String nombre) {
+
+        this.nombre = nombre;
+
+    }
     public Item( String nombre, String descripcion) {
 
         this.nombre = nombre;
@@ -25,14 +32,14 @@ public abstract class Item implements Identificable {
     @Override
     public int getId() {
         // TODO Auto-generated method stub
-        return 0;
+        return id;
     }
 
 
     @Override
     public void setId(int id) {
         // TODO Auto-generated method stub
-
+        this.id = id;
     }
     public String getNombre() {
         return nombre;

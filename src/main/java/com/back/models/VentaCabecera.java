@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "ventas_cabecera")
+// hice la interface identificable para que implemente el setid y getid
 public class VentaCabecera implements Identificable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +30,11 @@ public class VentaCabecera implements Identificable {
     private List<VentaDetalle> detalles;
 
 
-
+  // la pide hibernate
     public VentaCabecera() {
     }
 
-
+   //constructor sin id
     public VentaCabecera( String numeroFactura, LocalDateTime fechaVenta, Usuario usuario, double totalVenta, String formaPago) {
 
         this.numeroFactura = numeroFactura;
@@ -43,7 +44,7 @@ public class VentaCabecera implements Identificable {
         this.formaPago = formaPago;
     }
 
-    // Getters y Setters
+
     public int getId() {
         return id;
     }
@@ -95,10 +96,11 @@ public class VentaCabecera implements Identificable {
 
         return this.detalles;
     }
-
+    // cargo el detalle de la venta
     public void setDetalles(List<VentaDetalle> detalles) {
         this.detalles = detalles;
     }
+
     @Override
     public String toString() {
         return "VentaCabecera{" +

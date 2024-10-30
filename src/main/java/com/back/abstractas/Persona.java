@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
+// esta clase abstracta es para que implemente id nombre  apellido y dni
+// hice la interface identificable para que implemente el setid y getid
+
 public abstract class Persona implements Identificable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +21,12 @@ public abstract class Persona implements Identificable {
     public Persona() {
 
     }
+    public Persona(String nombre, String apellido, String dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+    }
+
 
     @Override
 	public int getId() {
@@ -31,11 +40,7 @@ public abstract class Persona implements Identificable {
 
 	}
 
-    public Persona(String nombre, String apellido, String dni) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-    }
+
 
     public String getNombre() {
         return nombre;

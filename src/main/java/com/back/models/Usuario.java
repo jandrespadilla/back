@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "usuarios")
+
+// esta clase abstracta es para que implemente id nombre  apellido y dni
 public class Usuario extends Persona {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +23,7 @@ public class Usuario extends Persona {
     }
 	    public Usuario( String nombre, String apellido, String dni, String direccion, String email) {
 	        super(nombre, apellido, dni);
-	        //this.id = id;
+
 	        this.direccion = direccion;
 	        this.email = email;
 	    }
