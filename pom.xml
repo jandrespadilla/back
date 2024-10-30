@@ -58,6 +58,11 @@
 		<artifactId>hibernate-core</artifactId>
 		<version>6.4.4.Final</version>
 	</dependency>
+	<dependency>
+		<groupId>com.coder.house.ventas.online</groupId>
+		<artifactId>ventas-online</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
 </dependencies>
 
 <build>
