@@ -1,6 +1,6 @@
-package com.back.models;
+package com.negocio.models;
 
-import com.back.abstractas.Persona;
+import com.negocio.abstractas.Persona;
 import jakarta.persistence.*;
 
 @Entity

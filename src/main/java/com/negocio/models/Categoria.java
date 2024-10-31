@@ -1,6 +1,6 @@
-package com.back.models;
+package com.negocio.models;
 
-import com.back.abstractas.Item;
+import com.negocio.abstractas.Item;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package com.back.abstractas;
+package com.negocio.abstractas;
 
-import com.back.interfaces.Identificable;
+import com.negocio.interfaces.Identificable;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;

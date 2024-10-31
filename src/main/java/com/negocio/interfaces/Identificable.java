@@ -1,4 +1,4 @@
-package com.back.interfaces;
+package com.negocio.interfaces;
 
 public interface  Identificable {
 	Long getId();

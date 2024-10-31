@@ -1,6 +1,6 @@
-package com.back.models;
+package com.negocio.models;
 
-import com.back.interfaces.Identificable;
+import com.negocio.interfaces.Identificable;
 import jakarta.persistence.*;
 
 @Entity
