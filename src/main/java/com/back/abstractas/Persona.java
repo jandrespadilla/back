@@ -13,7 +13,7 @@ import jakarta.persistence.MappedSuperclass;
 public abstract class Persona implements Identificable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected int id;
+    protected Long id;
     protected String nombre;
     protected String apellido;
     protected String dni;
@@ -29,13 +29,13 @@ public abstract class Persona implements Identificable {
 
 
     @Override
-	public int getId() {
+	public Long getId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return (long) 0;
 	}
 
 	@Override
-	public void setId(int id) {
+	public void setId(Long id) {
 		// TODO Auto-generated method stub
 
 	}
