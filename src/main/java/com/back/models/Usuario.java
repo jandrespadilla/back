@@ -2,11 +2,12 @@ package com.back.models;
 
 import com.back.abstractas.Persona;
 import jakarta.persistence.*;
-
+import lombok.Getter;
+import lombok.Setter;
 @Entity
 @Table(name = "usuarios")
-
-// esta clase abstracta es para que implemente id nombre  apellido y dni
+@Getter
+@Setter
 public class Usuario {
 
     @Id

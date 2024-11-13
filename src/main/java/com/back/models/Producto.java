@@ -1,29 +1,40 @@
 package com.back.models;
 
-import com.back.abstractas.Item;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Getter
+@Setter
 @Entity
 @Table(name = "productos")
 // hice la clase abstracta item para que implemente id nombre y descripcion
-public class Producto extends Item {
+public class Producto  {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
+    private String nombre;
+
+    private String descripcion;
 
     @Column( nullable = false)
     private int stock;
+
     @Column( nullable = false)
     private double precio;
+
     @ManyToMany
     @JoinTable(
             name = "producto_categoria",
             joinColumns = @JoinColumn(name = "producto_id"),
             inverseJoinColumns = @JoinColumn(name = "categoria_id")
-    )
+    )@JsonIgnore
     private List<Categoria> categorias = new ArrayList<>();
 
 
@@ -32,33 +43,11 @@ public class Producto extends Item {
 
     }
     public Producto(String nombre, String descripcion, int stock, double precio) {
-        super( nombre, descripcion);
+
+        this.nombre = nombre;
+        this.descripcion = descripcion;
         this.stock = stock;
         this.precio = precio;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
-
-    public double getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
-
-    public List<Categoria> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
     }
 
     @Override
@@ -70,13 +59,6 @@ public class Producto extends Item {
                 ", stock=" + stock +
                 ", precio=" + precio +
                 '}';
-    }
-  // relacionno las categorias con los productos
-    public void addCategoria(Categoria categoria) {
-        if (!categorias.contains(categoria)) {
-            categorias.add(categoria);
-            categoria.getProductos().add(this);
-        }
     }
 
 
