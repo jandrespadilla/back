@@ -73,7 +73,7 @@ public class ProductoController {
         }catch (IllegalArgumentException e){
             return ResponseEntity.noContent().build();
         }catch (Exception e){
-            e.printStackTrace();
+            
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
