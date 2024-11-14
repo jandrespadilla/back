@@ -1,5 +1,6 @@
 package com.back.controllers;
 
+import com.back.dtos.AignarCategoriaDTO;
 import com.back.models.Producto;
 import com.back.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +65,18 @@ public class ProductoController {
             return  ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    @PostMapping("/asignarcategoria")
+    public ResponseEntity<Producto> asignarCategoria(@RequestBody AignarCategoriaDTO asignarCategoria){
+        try {
+            Producto productoActualizado = productoService.asignarCategoriaProducto(asignarCategoria);
+            return ResponseEntity.ok(productoActualizado);
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.noContent().build();
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
 }
 
