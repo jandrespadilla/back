@@ -1,18 +1,20 @@
 package com.back.services;
 
+import com.back.dtos.AignarCategoriaDTO;
+import com.back.models.Categoria;
 import com.back.models.Producto;
+import com.back.repositories.CategoriaRepository;
 import com.back.repositories.ProductoRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-
 @Service
 public class ProductoService {
     @Autowired
     private ProductoRepository productoRepostery;
-
+    @Autowired
+    private CategoriaRepository categoriaRepository;
     public List<Producto> getAllProductos(){
         return productoRepostery.findAll();
     }
@@ -47,5 +49,12 @@ public class ProductoService {
             throw new IllegalArgumentException("Producto no encontrado");
         }
         productoRepostery.deleteById(id);
+    }
+    @Transactional
+    public Producto asignarCategoriaProducto( AignarCategoriaDTO asignarCategoria){
+        Producto producto=productoRepostery.findById(asignarCategoria.getProductoID()).orElseThrow(()-> new IllegalArgumentException("No se encontro el producto"));
+        Categoria categoria= categoriaRepository.findById(asignarCategoria.getCategoriaID()).orElseThrow(()-> new IllegalArgumentException("No se encontro la categoria"));
+        producto.getCategorias().add(categoria);
+        return productoRepostery.save(producto);
     }
 }
