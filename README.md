@@ -1,81 +1,93 @@
-API REST - BackEnd para Manejo de venta de productos
-Descripcion: Esta API proporciona endpoints para el manejo de un sistema rudimentario de usuarios, productos, sus categorías y las ventas de los mismos.
+# API REST - BackEnd para Manejo de Venta de Productos
 
-Version: 0.4
+**Descripción**: Esta API proporciona endpoints para el manejo de un sistema rudimentario de usuarios, productos, sus categorías y las ventas de los mismos.
 
-Contacto:
+**Versión**: 0.4
 
-Nombre: Andres Padilla
-URL: https://jorgeandrespadilla.com.ar
-Email: jandrespadilla@gmail.com
-Servidor:
+## Contacto
 
-http://localhost:8080
-Documentacion:
+**Nombre**: Andres Padilla  
+**URL**: [jorgeandrespadilla.com.ar](https://jorgeandrespadilla.com.ar)  
+**Email**: [jandrespadilla@gmail.com](mailto:jandrespadilla@gmail.com)
+
+## Servidor
+
+`http://localhost:8080`
+
+## Documentación
 
 Esta documentación describe las API disponibles para el sistema de venta de productos.
 
-Autenticacion:
+## Autenticación
 
 Actualmente la API no requiere autenticación para su uso.
 
-Tags:
+## Tags
 
-Gestión de items de las facturas
-Cabecera de las facturas realizadas
-Gestión de Usuarios
-Gestión de Productos
-Gestión de Categorias
-Endpoints Disponibles
-Usuarios
-** - /api/usuarios**
-* GET: Obtiene la Lista de todos los usuarios.
-* POST: Agregar un nuevo Usuario.
-* DELETE: Eliminar un Usuario (recibe id de usuario por parametro)
+- **Gestión de items de las facturas**
+- **Cabecera de las facturas realizadas**
+- **Gestión de Usuarios**
+- **Gestión de Productos**
+- **Gestión de Categorías**
 
-** - /api/usuarios/{id}**
-* GET: Obtener un usuario por su ID.
-* PUT: Editar un Usuario (recibe id de usuario por parametro).
+## Endpoints Disponibles
 
-Productos
-** - /api/productos**
-* GET: Obtener la Lista de todos los Productos.
-* POST: Agregar un nuevo Producto.
+### Usuarios
 
-** - /api/productos/{id}**
-* GET: Obtener un Producto por su ID.
-* PUT: Editar un Producto (recibe id de producto por parametro).
-* DELETE: Eliminar un Producto (recibe id de producto por parametro).
+**`/api/usuarios`**
 
-** - /api/productos/asignarcategoria**
-* POST: Asignar una Categoria al Producto.
+- **GET**: Obtiene la lista de todos los usuarios.
+- **POST**: Agregar un nuevo usuario.
+- **DELETE**: Eliminar un usuario (recibe id de usuario por parámetro).
 
-Categorias
-** - /api/categorias**
-* GET: Obtener la Lista de todas las categorias.
-* POST: Agregar una nueva Categoria.
+**`/api/usuarios/{id}`**
 
-** - /api/categorias/{id}**
-* GET: Obtener una categorias por su ID.
-* PUT: Editar una Categoría (recibe id de categoria por parametro).
-* DELETE: Eliminar una Categoría (recibe id de categoria por parametro).
+- **GET**: Obtener un usuario por su ID.
+- **PUT**: Editar un usuario (recibe id de usuario por parámetro).
 
-Facturas
-** - /api/ventacabecera**
-* GET: Obtener la Lista de todas las facturas.
-* POST: Agregar una nueva Factura.
+### Productos
 
-** - /api/ventacabecera/{id}**
-* GET: Obtener una factura por su ID.
-* PUT: Editar una Factura (recibe id de factura por parametro).
-* DELETE: Eliminar una Factura (recibe id de factura por parametro).
+**`/api/productos`**
 
-Items de Facturas
-** - /api/ventadetalle**
-* GET: Obtener la Lista de todos los Items facturados.
-* POST: Agregar un nuevo Item a la factura.
+- **GET**: Obtener la lista de todos los productos.
+- **POST**: Agregar un nuevo producto.
 
-** - /api/ventadetalle/{id}**
-* GET: Obtener un Item por su ID.
-* PUT: Editar un Item (recibe id de item por parametro).
-* DELETE: Eliminar una Item (recibe id de item por parametro).
+**`/api/productos/{id}`**
+
+- **GET**: Obtener un producto por su ID.
+- **PUT**: Editar un producto (recibe id de producto por parámetro).
+- **DELETE**: Eliminar un producto (recibe id de producto por parámetro).
+
+**`/api/productos/asignarcategoria`**
+
+- **POST**: Asignar una categoría al producto.
+
+### Categorías
+
+**`/api/categorias`**
+
+- **GET**: Obtener la lista de todas las categorías.
+- **POST**: Agregar una nueva categoría.
+
+**`/api/categorias/{id}`**
+
+- **GET**: Obtener una categoría por su ID.
+- **PUT**: Editar una categoría (recibe id de categoría por parámetro).
+- **DELETE**: Eliminar una categoría (recibe id de categoría por parámetro).
+
+### Facturas
+
+**`/api/ventacabecera`**
+
+- **GET**: Obtener la lista de todas las facturas.
+- **POST**: Agregar una nueva factura.
+
+**`/api/ventacabecera/{id}`**
+
+- **GET**: Obtener una factura por su ID.
+- **PUT**: Editar una factura (recibe id de factura por parámetro).
+- **DELETE**: Eliminar una factura (recibe id de factura por parámetro).
+
+### Items de Facturas
+
+**`/api/vent
